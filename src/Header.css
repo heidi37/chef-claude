@@ -1,3 +1,19 @@
 header {
   display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 15px 15px 0 0;
+  padding: 1rem;
+  min-width: 300px;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  img {
+    width: 2rem;
+    height: fit-content;
+    margin-right: 1rem
+  }
+  h1 {
+    font-weight: 400;
+    font-size: 2rem;
+  }
 }

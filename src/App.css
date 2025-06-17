@@ -4,3 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
+
+main {
+  border-radius: 16px;
+  background: whitesmoke;
+  padding: .25rem;
+  min-height: 200px;
+}
