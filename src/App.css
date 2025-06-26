@@ -3,11 +3,19 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  @media(max-width: 335px){
+    padding: 2rem 0;
+    margin-left: .5rem;
+  }
 }
 
-main {
+.app-content {
   border-radius: 16px;
   background: whitesmoke;
-  padding: .25rem;
-  min-height: 200px;
+  padding: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 700px) {
+    min-width: 600px;
+  }
 }

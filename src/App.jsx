@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import './App.css'
 import Header from './Header'
+import Body from './MainApp'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <main>
+    <div className="app-content">
       <Header />
-    </main>
+      <Body />
+    </div>
   )
 }
 
