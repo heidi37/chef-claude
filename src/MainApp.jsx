@@ -1,17 +1,17 @@
 import './MainApp.css'
+import {useState} from "react"
 
 export default function Body() {
 
-  const ingredients = ["corn", "chicken", "peas"]
+  const [ingredients, setIngredients] = useState([])
 
   const ingredientsList = ingredients.map(ingredient => <li key={ingredient}>{ingredient}</li>)
 
   function handleSubmit(event){
-    event.preventDefault()
+    event.preventDefault() 
     const formData = new FormData(event.currentTarget)
     const newIngredient = formData.get("ingredient")
-    ingredients.push(newIngredient)
-    console.log(ingredients)
+    setIngredients(prev => [...prev, newIngredient]);
   }
 
   return (
