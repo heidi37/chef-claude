@@ -3,7 +3,6 @@ form {
   gap: 1rem;
   justify-content: center;
   margin: 3rem 0;
-  padding: 0 2rem;
   @media (max-width: 500px) {
     flex-direction: column;
   }
@@ -27,19 +26,24 @@ input[type="submit"] {
   font-weight: 500;
 }
 
+main {
+  margin: 1rem;
+}
+
 .get-recipe-container {
+  margin-top: 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  margin: 1rem;
   border-radius: 0.4rem;
   border: 1px solid rgba(0, 0, 0, 0.199);
   button {
     color: #fff;
-    background: darkorange;
+    background: #d17557;
   }
-  h3, p {
+  h3,
+  p {
     margin: 0;
     text-align: left;
   }
