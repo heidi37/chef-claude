@@ -2,6 +2,9 @@ import "./MainApp.css"
 import { useState } from "react"
 import ClaudeRecipe from './ClaudeRecipe'
 import IngredientsList from './IngredientsList'
+import { getRecipeFromChefClaude} from './api/ai'
+
+
 
 export default function Body() {
   const [ingredients, setIngredients] = useState([
@@ -10,6 +13,8 @@ export default function Body() {
     "pear",
     "cheese",
   ])
+
+console.log(getRecipeFromChefClaude(ingredients))
 
   const [recipeShown, setRecipeShown] = useState(false)
 
