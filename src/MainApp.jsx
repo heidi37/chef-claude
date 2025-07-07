@@ -1,6 +1,6 @@
 import "./MainApp.css"
 import { useState } from "react"
-import Recipe from './Recipe'
+import ClaudeRecipe from './ClaudeRecipe'
 import IngredientsList from './IngredientsList'
 
 export default function Body() {
@@ -33,12 +33,12 @@ export default function Body() {
         />
         <input type="submit" value="+ Add ingredient" />
       </form>
-      {ingredients.length > 0 && (
-        <IngredientsList ingredients={ingredients} recipe={getRecipe}/>
-      )}
-      {recipeShown && (
-        <Recipe />
-      )}
+      {ingredients.length > 0 &&
+        <IngredientsList
+          ingredients={ingredients}
+          recipe={getRecipe}
+        />}
+      {recipeShown && <ClaudeRecipe />}
     </main>
   )
 }
