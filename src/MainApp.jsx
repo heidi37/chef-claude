@@ -5,7 +5,6 @@ import IngredientsList from './IngredientsList'
 import { getRecipeFromChefClaude} from './api/ai'
 
 
-
 export default function Body() {
   const [ingredients, setIngredients] = useState([
 
