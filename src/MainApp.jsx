@@ -8,24 +8,30 @@ import { getRecipeFromChefClaude} from './api/ai'
 
 export default function Body() {
   const [ingredients, setIngredients] = useState([
-    "apple",
-    "banana",
-    "pear",
-    "cheese",
+
   ])
 
-console.log(getRecipeFromChefClaude(ingredients))
 
   const [recipeShown, setRecipeShown] = useState(false)
+  const [recipe, setRecipe] = useState([])
 
   function addIngredient(formData) {
     const newIngredient = formData.get("ingredient")
     setIngredients((prev) => [...prev, newIngredient])
   }
 
-  function getRecipe() {
+  async function getRecipe() {
     setRecipeShown((prev) => !prev)
+      try {
+        const fetchedRecipe = await getRecipeFromChefClaude(ingredients)
+        console.log(fetchedRecipe)
+        setRecipe(fetchedRecipe)
+      } catch {
+        console.error('Error fetching recipe:', error);
+      }
   }
+
+
 
   return (
     <main>
@@ -43,7 +49,7 @@ console.log(getRecipeFromChefClaude(ingredients))
           ingredients={ingredients}
           recipe={getRecipe}
         />}
-      {recipeShown && <ClaudeRecipe />}
+      {recipeShown && <ClaudeRecipe recipe={recipe} />}
     </main>
   )
 }
