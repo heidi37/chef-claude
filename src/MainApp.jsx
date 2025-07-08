@@ -11,8 +11,6 @@ export default function Body() {
 
   ])
 
-
-  const [recipeShown, setRecipeShown] = useState(false)
   const [recipe, setRecipe] = useState([])
 
   function addIngredient(formData) {
@@ -21,7 +19,6 @@ export default function Body() {
   }
 
   async function getRecipe() {
-    setRecipeShown((prev) => !prev)
       try {
         const fetchedRecipe = await getRecipeFromChefClaude(ingredients)
         console.log(fetchedRecipe)
@@ -49,7 +46,7 @@ export default function Body() {
           ingredients={ingredients}
           recipe={getRecipe}
         />}
-      {recipeShown && <ClaudeRecipe recipe={recipe} />}
+      {<ClaudeRecipe recipe={recipe} />}
     </main>
   )
 }
