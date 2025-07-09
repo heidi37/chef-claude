@@ -1,14 +1,11 @@
 import "./MainApp.css"
 import { useState } from "react"
-import ClaudeRecipe from './ClaudeRecipe'
-import IngredientsList from './IngredientsList'
-import { getRecipeFromChefClaude} from './api/ai'
-
+import ClaudeRecipe from "./ClaudeRecipe"
+import IngredientsList from "./IngredientsList"
+import { getRecipeFromChefClaude } from "./api/ai"
 
 export default function Body() {
-  const [ingredients, setIngredients] = useState([
-
-  ])
+  const [ingredients, setIngredients] = useState([])
 
   const [recipe, setRecipe] = useState([])
 
@@ -17,17 +14,20 @@ export default function Body() {
     setIngredients((prev) => [...prev, newIngredient])
   }
 
-  async function getRecipe() {
-      try {
-        const fetchedRecipe = await getRecipeFromChefClaude(ingredients)
-        console.log(fetchedRecipe)
-        setRecipe(fetchedRecipe)
-      } catch {
-        console.error('Error fetching recipe:', error);
-      }
+  function startOver() {
+    setIngredients([])
+    setRecipe([])
   }
 
-
+  async function getRecipe() {
+    try {
+      const fetchedRecipe = await getRecipeFromChefClaude(ingredients)
+      console.log(fetchedRecipe)
+      setRecipe(fetchedRecipe)
+    } catch {
+      console.error("Error fetching recipe:", error)
+    }
+  }
 
   return (
     <main>
@@ -40,12 +40,15 @@ export default function Body() {
         />
         <input type="submit" value="+ Add ingredient" />
       </form>
-      {ingredients.length > 0 &&
-        <IngredientsList
-          ingredients={ingredients}
-          recipe={getRecipe}
-        />}
+      {ingredients.length > 0 && (
+        <IngredientsList ingredients={ingredients} recipe={getRecipe} />
+      )}
       {<ClaudeRecipe recipe={recipe} />}
+      {ingredients.length > 0 && (
+        <button onClick={startOver} class="start-over">
+          Start over
+        </button>
+      )}
     </main>
   )
 }
