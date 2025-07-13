@@ -1,5 +1,5 @@
 import "./MainApp.css"
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import ClaudeRecipe from "./ClaudeRecipe"
 import IngredientsList from "./IngredientsList"
 import { getRecipeFromChefClaude } from "./api/ai"
@@ -8,6 +8,12 @@ export default function Body() {
   const [ingredients, setIngredients] = useState([])
 
   const [recipe, setRecipe] = useState([])
+
+  const recipeSection = useRef(null)
+
+  useEffect(() => {
+        recipe && recipeSection.current && recipeSection.current.scrollIntoView({behavior: "smooth"})
+    },[recipe])
 
   function addIngredient(formData) {
     const newIngredient = formData.get("ingredient")
@@ -22,7 +28,6 @@ export default function Body() {
   async function getRecipe() {
     try {
       const fetchedRecipe = await getRecipeFromChefClaude(ingredients)
-      console.log(fetchedRecipe)
       setRecipe(fetchedRecipe)
     } catch {
       console.error("Error fetching recipe:", error)
@@ -43,7 +48,7 @@ export default function Body() {
       {ingredients.length > 0 && (
         <IngredientsList ingredients={ingredients} recipe={getRecipe} />
       )}
-      {<ClaudeRecipe recipe={recipe} />}
+      {<ClaudeRecipe recipe={recipe} ref={recipeSection} />}
       {ingredients.length > 0 && (
         <button onClick={startOver} class="start-over">
           Start over
