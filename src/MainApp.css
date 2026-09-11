@@ -2,7 +2,7 @@ form {
   display: flex;
   gap: 1rem;
   justify-content: center;
-  margin: 3rem 0 1rem;
+  margin: 1.25rem 0 1rem;
   @media (max-width: 500px) {
     flex-direction: column;
   }
@@ -12,6 +12,7 @@ input {
   padding: 0.6em 1.2em;
   border-radius: 0.4rem;
   font-family: Inter, sans-serif;
+  font-size: 1.125rem;
 }
 
 input[type="text"] {
